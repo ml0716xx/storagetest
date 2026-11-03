@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>配储测容 · 负荷测算数据</title>
+<link rel="stylesheet" href="assets/css/app.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- 左侧导航 -->
+    <aside class="sider">
+      <div class="sider-logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/>
+            <circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none" opacity=".18"/>
+          </svg>
+        </span>
+        <span class="logo-text">配储测容</span>
+      </div>
+
+      <div class="sider-section">
+        <span>主导航</span>
+        <span class="sider-section-icon">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h13"/></svg>
+        </span>
+      </div>
+
+      <nav class="menu" id="menu"></nav>
+    </aside>
+
+    <!-- 右侧主区 -->
+    <main class="main">
+      <header class="topbar">
+        <div class="tabs" id="tabs"></div>
+        <div class="user">
+          <span class="user-avatar">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><circle cx="8" cy="14" r="1.6"/></svg>
+          </span>
+          <span class="user-name">薛易立</span>
+        </div>
+      </header>
+
+      <section class="content" id="content"></section>
+
+      <footer class="page-footer">Copyright ©2023 Power System Technology</footer>
+    </main>
+  </div>
+
+  <div class="toast-wrap" id="toastWrap"></div>
+  <div class="modal-root" id="modalRoot"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/xlsx-lite.js"></script>
+  <script src="assets/js/clean-drawer.js"></script>
+  <script src="assets/js/pages.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
