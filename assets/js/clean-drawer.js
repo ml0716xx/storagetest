@@ -41,8 +41,11 @@
   }
 
   /* ---------- 模拟清洗结果 ---------- */
-  function buildRows() {
-    var rows = [['时间', '原始负荷(kW)', '清洗后负荷(kW)', '处理说明']];
+  // ratio = 综合倍率（CT变比 × PT变比）。表计读数是二次侧值，
+  // 清洗后负荷 = 二次侧读数 × 综合倍率，即一次侧 kW。
+  function buildRows(ratio) {
+    var k = (isFinite(ratio) && ratio > 0) ? ratio : 1;
+    var rows = [['时间', '原始读数(kW)', '清洗后负荷(kW)', '处理说明']];
     var points = 96;                 // 24h × 15min
 
     for (var i = 0; i < points; i++) {
@@ -50,15 +53,18 @@
       var m = (i % 4) * 15;
       var base = 620 + 210 * Math.sin((h - 8) / 24 * Math.PI * 2) + 130 * Math.exp(-Math.pow(h - 19, 2) / 6);
       var noise = (Math.sin(i * 1.7) + Math.cos(i * 0.9)) * 6;
-      var real = Math.round((base + noise) * 10) / 10;
-      var raw = real;
+      var real = Math.round((base + noise) * 10) / 10;   // 一次侧真值
+      var raw = real;                                    // 表计读数（二次侧）
       var note = '正常';
 
       if (i % 37 === 11) { raw = null; note = '缺失插补'; }
       else if (i % 43 === 5) { raw = Math.round(real * 12.4 * 10) / 10; note = '异常修正（越限）'; }
       else if (i % 29 === 9) { raw = -Math.round(real * 0.06 * 10) / 10; note = '异常修正（负值）'; }
 
-      rows.push([('2026-11-03 ' + pad(h) + ':' + pad(m)), raw === null ? '' : raw, real, note]);
+      // 读数折算到二次侧，异常值同样按读数口径给
+      var reading = (raw === null || k === 1) ? raw : Math.round(raw / k * 100) / 100;
+
+      rows.push([('2026-11-03 ' + pad(h) + ':' + pad(m)), reading === null ? '' : reading, real, note]);
     }
     return rows;
   }
@@ -86,12 +92,23 @@
         '</div>';
     }
 
+    // 综合倍率（上传就绪阶段可改，作为清洗输入源）
+    if (s.phase === 'idle' || s.phase === 'ready') {
+      html += '<div class="param-row">' +
+        '<span class="param-label">综合倍率：</span>' +
+        '<input class="param-input" id="fRatio" inputmode="decimal" value="' + s.ratio + '" />' +
+        '<span class="param-hint">默认 1</span>' +
+        '</div>' +
+        '<div class="param-note">源数据已含倍率（一次值 kW）时保持 1；二次侧读数填 CT变比 × PT变比。</div>';
+    }
+
     // 进度
     if (s.phase === 'cleaning') {
+      var ratioTip = (st.ratio && st.ratio !== '1') ? '，综合倍率 ×' + st.ratio : '';
       html += '<div class="block clean-progress">' +
         '<div class="cp-head"><span id="cpText">' + phaseText(s.progress) + '</span><span id="cpPct">' + Math.round(s.progress) + '%</span></div>' +
         '<div class="cp-bar"><i id="cpFill" style="width:' + Math.round(s.progress) + '%"></i></div>' +
-        '<div class="cp-note">正在清洗「' + s.file.name + '」，请稍候</div>' +
+        '<div class="cp-note">正在清洗「' + s.file.name + '」' + ratioTip + '，请稍候</div>' +
         '</div>';
     }
 
@@ -101,6 +118,7 @@
       html += '<div class="result-card">' +
         '<div class="rc-head"><span class="rc-ok">' + ICON.check + '</span>清洗完成</div>' +
         '<div class="rc-file">' + ICON.file + '<span title="' + r.fileName + '">' + r.fileName + '</span></div>' +
+        '<div class="rc-meta">综合倍率 ×' + r.ratio + '　已折算至一次侧　96 个采样点</div>' +
         '</div>';
     }
 
@@ -156,6 +174,18 @@
     var start = document.getElementById('btnStart');
     if (start) start.addEventListener('click', startClean);
 
+    var ratioEl = document.getElementById('fRatio');
+    if (ratioEl) {
+      ratioEl.addEventListener('input', function () { st.ratio = ratioEl.value; });
+      ratioEl.addEventListener('blur', function () {
+        var v = (ratioEl.value || '').trim();
+        if (!v || !isFinite(parseFloat(v)) || parseFloat(v) <= 0) {
+          ratioEl.value = '1';
+          st.ratio = '1';
+        }
+      });
+    }
+
     var download = document.getElementById('btnDownload');
     if (download) download.addEventListener('click', downloadResult);
 
@@ -200,6 +230,14 @@
   /* ---------- 清洗流程 ---------- */
   function startClean() {
     if (!st.file || st.phase === 'cleaning') return;
+
+    var ratio = parseFloat(st.ratio);
+    if (!isFinite(ratio) || ratio <= 0) {
+      window.App.toast('综合倍率必须填大于 0 的数字');
+      return;
+    }
+    st.ratio = String(ratio);
+
     st.phase = 'cleaning';
     st.progress = 0;
     render();
@@ -222,10 +260,12 @@
   }
 
   function finishClean() {
-    var rows = buildRows();
+    var ratio = parseFloat(st.ratio) || 1;
+    var rows = buildRows(ratio);
     var base = st.file.name.replace(/\.(xlsx|xls|csv)$/i, '');
     st.result = {
       rows: rows,
+      ratio: ratio,
       fileName: base + '_清洗结果_' + stamp() + '.xlsx'
     };
     st.phase = 'done';
@@ -255,7 +295,7 @@
   /* ---------- 打开 / 关闭 ---------- */
   function open() {
     if (document.getElementById('drawer')) return;
-    st = { phase: 'idle', file: null, progress: 0, result: null };
+    st = { phase: 'idle', file: null, progress: 0, result: null, ratio: '1' };
 
     var mask = document.createElement('div');
     mask.className = 'drawer-mask';
