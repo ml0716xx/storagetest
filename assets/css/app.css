@@ -1451,10 +1451,12 @@ table.data.tbl-ent .ops { flex-wrap: nowrap; gap: 8px; }
 table.data.tbl-ent .ops a, table.data.tbl-ent .ops span { white-space: nowrap; }
 table.data.tbl-ent tbody td { height: auto; padding-top: 9px; padding-bottom: 9px; }
 table.data.tbl-ent th, table.data.tbl-ent td { padding: 0 8px; font-size: 11.5px; }
-table.data.tbl-ent { font-size: 11.5px; min-width: 1620px; }
-table.data.tbl-ent th, table.data.tbl-ent td { padding: 0 7px; }
-table.data.tbl-ent td:nth-child(1) { max-width: 170px; overflow: hidden; text-overflow: ellipsis; }
-table.data.tbl-ent td:nth-child(2) { max-width: 190px; overflow: hidden; text-overflow: ellipsis; }
+table.data.tbl-ent { font-size: 11.5px; min-width: 0; }
+table.data.tbl-ent th, table.data.tbl-ent td { padding: 0 8px; }
+table.data.tbl-ent td:nth-child(1) { max-width: 180px; overflow: hidden; text-overflow: ellipsis; }
+table.data.tbl-ent td:nth-child(2) { max-width: 150px; overflow: hidden; text-overflow: ellipsis; color: var(--text-2); }
+table.data.tbl-ent td:nth-child(3) { max-width: 132px; }
+table.data.tbl-ent td:nth-child(4) { max-width: 210px; overflow: hidden; text-overflow: ellipsis; }
 
 .textarea { width: 100%; }
 .mt-compact .mt-corner, .mt-compact .mt-label { width: 104px; font-size: 10px; padding-left: 6px; }
@@ -1478,8 +1480,8 @@ table.data.tbl-ent td:nth-child(2) { max-width: 190px; overflow: hidden; text-ov
   table.data.tbl-ent { font-size: 11px; min-width: 0; }
   table.data.tbl-ent th, table.data.tbl-ent td { padding: 0 5px; }
   table.data.tbl-ent .col-time { white-space: normal; line-height: 1.28; min-width: 78px; }
-  table.data.tbl-ent thead th:nth-child(12),
-  table.data.tbl-ent thead th:nth-child(13) { white-space: normal; line-height: 1.2; }
+  table.data.tbl-ent thead th:nth-child(8),
+  table.data.tbl-ent thead th:nth-child(9) { white-space: normal; line-height: 1.2; }
   table.data.tbl-ent thead th:last-child,
   table.data.tbl-ent tbody td:last-child { width: 158px; min-width: 158px; max-width: 158px; }
   table.data.tbl-ent .ops { flex-wrap: wrap; gap: 3px 7px; justify-content: flex-start; }

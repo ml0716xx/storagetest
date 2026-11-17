@@ -58,13 +58,13 @@
         '</div>';
 
       html += '<div class="table-wrap"><table class="data tbl-ent"><thead><tr>' +
-        '<th style="width:12%">企业名称</th><th style="width:10%">项目</th><th style="width:11%">项目编号</th><th style="width:14%">企业地址</th><th style="width:7%">企业来源</th>' +
-        '<th style="width:7%">建议配储台数</th><th style="width:8%">回本年限(年)</th><th style="width:9%">10年净利润(万元)</th>' +
-        '<th style="width:9%">变压器容量(kVA)</th><th style="width:7%">电压等级</th><th style="width:6%">用电类别</th>' +
-        '<th style="width:7%">计费类型</th><th style="width:11%">最近测算时间</th><th style="width:11%">创建时间</th>' +
-        '<th style="width:6%">创建人</th><th style="width:16%">操作</th></tr></thead><tbody>';
+        '<th style="width:15%">企业名称</th><th style="width:12%">项目</th><th style="width:12%">项目编号</th>' +
+        '<th style="width:16%">企业地址</th><th style="width:8%">企业来源</th>' +
+        '<th style="width:8%">建议配储台数</th><th style="width:8%">回本年限(年)</th>' +
+        '<th style="width:12%">最近测算时间</th><th style="width:12%">创建时间</th>' +
+        '<th style="width:6%">创建人</th><th style="width:14%">操作</th></tr></thead><tbody>';
 
-      if (!slice.length) html += U.emptyRow(16, '暂无符合条件的企业');
+      if (!slice.length) html += U.emptyRow(11, '暂无符合条件的企业');
       else slice.forEach(function (r) {
         var running = r.calcState === 'running';
         html += '<tr data-id="' + r.id + '">' +
@@ -75,11 +75,6 @@
           '<td><span class="tag">' + U.esc(r.source) + '</span></td>' +
           '<td>' + U.esc(r.scale) + '</td>' +
           '<td>' + U.esc(r.payback) + '</td>' +
-          '<td>' + U.esc(r.profit10) + '</td>' +
-          '<td>' + r.transCap + '</td>' +
-          '<td>' + U.esc(r.volt) + '</td>' +
-          '<td>' + U.esc(r.useType) + '</td>' +
-          '<td>' + U.esc(r.feeType) + '</td>' +
           '<td class="col-time">' + (running ? '<span class="txt-running">测算中</span>' : U.esc(r.lastCalc)) + '</td>' +
           '<td class="col-time">' + U.esc(r.create) + '</td>' +
           '<td>' + U.esc(r.owner) + '</td>' +
