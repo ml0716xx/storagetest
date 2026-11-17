@@ -187,11 +187,12 @@
   /* ---------- 企业编辑抽屉 ---------- */
   function openEditDrawer(row, onDone) {
     var isEdit = !!row;
-    var d = row || { name: '', addr: '', volt: '', useType: '', feeType: '按容量计费', transCap: '', loadRate: '', isPublic: '否' };
+    var d = row || { name: '', project: '', addr: '', volt: '', useType: '', feeType: '按容量计费', transCap: '', loadRate: '', isPublic: '否' };
     if (!d.isPublic) d.isPublic = '否';
 
     var body = '<div class="dr-grid">' +
       U.field('企业名称', U.unitInput({ id: 'eName', value: d.name, placeholder: '请输入企业名称' }), { required: true }) +
+      U.field('项目信息', U.unitInput({ id: 'eProject', value: d.project || '', placeholder: '请输入项目信息' })) +
       U.field('企业地址', U.unitInput({ id: 'eAddr', value: d.addr, placeholder: '请选择省/市/区县' }), { required: true }) +
       U.field('电压等级', U.selectBox({ id: 'eVolt', placeholder: '请选择电压等级', options: window.OPTIONS.volt, value: d.volt }), { required: true }) +
       U.field('用电类别', U.selectBox({ id: 'eUseType', placeholder: '请选择用电类别', options: window.OPTIONS.useType, value: d.useType }), { required: true }) +
@@ -222,6 +223,7 @@
         if (!name) { window.App.toast('请填写企业名称'); return; }
         var payload = {
           name: name,
+          project: el.querySelector('#eProject').value.trim(),
           addr: el.querySelector('#eAddr').value.trim(),
           volt: el.querySelector('#eVolt').value,
           useType: el.querySelector('#eUseType').value,
@@ -235,7 +237,7 @@
           var id = Math.max.apply(null, window.ENTERPRISE_DATA.map(function (r) { return r.id; })) + 1;
           var now = nowStr();
           window.ENTERPRISE_DATA.unshift({
-            id: id, name: payload.name, addr: payload.addr, source: '手动创建', scale: '--', payback: '--', profit10: '--',
+            id: id, name: payload.name, project: payload.project, addr: payload.addr, source: '手动创建', scale: '--', payback: '--', profit10: '--',
             transCap: payload.transCap, volt: payload.volt, useType: payload.useType, feeType: payload.feeType,
             lastCalc: now, create: now, owner: '薛易立', calcState: 'done'
           });
