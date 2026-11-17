@@ -22,9 +22,11 @@
       ]
     },
     {
-      key: 'common-params', label: '公共参数', icon: 'file', expanded: false,
+      key: 'common-params', label: '公共参数', icon: 'file', expanded: true,
       children: [
-        { key: 'common-param', label: '参数配置' }
+        { key: 'price-manage', label: '电价管理' },
+        { key: 'cost-info', label: '成本信息' },
+        { key: 'storage-template', label: '储能模板管理' }
       ]
     }
   ];
@@ -37,18 +39,21 @@
     });
   })(MENU);
 
+  /* 不在菜单里的页签 */
+  LABELS['calc-report'] = '储能项目测算报告';
+  LABELS['price-edit'] = '电价模板配置';
+
   function defaultPageState() {
     return { draft: { name: '', start: '', end: '' }, applied: { name: '', start: '', end: '' }, page: 1, size: 10 };
   }
 
   var App = {
     state: {
-      activeKey: 'load-data',
+      activeKey: 'storage-calc-page',
       tabs: [
-        { key: 'storage-calc-page', closable: false },
-        { key: 'load-data', closable: true }
+        { key: 'storage-calc-page', closable: false }
       ],
-      pages: { 'load-data': defaultPageState() },
+      pages: {},
       current: null
     },
 

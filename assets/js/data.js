@@ -51,3 +51,167 @@ window.LOAD_DATA = [
   { id: 2,  name: '佛山顺德家电集群',      create: '2026-06-15 15:08:41', update: '2026-06-15 15:14:26', owner: '王康' },
   { id: 1,  name: '东莞松山湖工业园',      create: '2026-06-14 09:47:20', update: '2026-06-14 09:53:38', owner: '薛易立' }
 ];
+
+/* 企业管理 —— 前 10 条与截图一致 */
+window.ENTERPRISE_DATA = [
+  { id: 10, name: '1111',        addr: '重庆市/重庆郊县/巫溪县',   source: '手动创建', scale: '--',  payback: '--',  profit10: '--',    transCap: 1000,  volt: '1~10kV',  useType: '两部制', feeType: '按容计费', lastCalc: '2026-11-05 14:47:32', create: '2026-11-05 14:47:32', owner: '王晨',   calcState: 'done' },
+  { id: 9,  name: '量子科技',     addr: '河南省安阳市林州市',       source: '手动创建', scale: '20',  payback: '5',   profit10: '569.04', transCap: 1250, volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-09-29 16:09:25', create: '2026-09-29 16:09:25', owner: '王晨',   calcState: 'done' },
+  { id: 8,  name: '常州新诚',     addr: '江苏省常州市新北区',       source: '手动创建', scale: '1',   payback: '5',   profit10: '22.05',  transCap: 1000, volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-09-29 16:20:17', create: '2026-09-29 16:20:17', owner: '朱涛',   calcState: 'done' },
+  { id: 7,  name: '金万',         addr: '天津市市辖区东郊区',       source: '手动创建', scale: '3',   payback: '4.9', profit10: '80.85',  transCap: 630,  volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-08-24 19:24:34', create: '2026-08-24 19:24:34', owner: '王晨',   calcState: 'done' },
+  { id: 6,  name: '江西抚州1',    addr: '江西省抚州市金溪县',       source: '手动创建', scale: '4',   payback: '7.59', profit10: '21.01', transCap: 1250, volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-08-18 10:42:03', create: '2026-08-18 16:29:02', owner: '薛易立', calcState: 'done' },
+  { id: 5,  name: '江西抚州储能企业', addr: '江西省抚州市金溪县',   source: '手动创建', scale: '--',  payback: '--',  profit10: '--',    transCap: 1250, volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-08-18 14:12:55', create: '2026-08-18 14:12:55', owner: '崔阳',   calcState: 'running' },
+  { id: 4,  name: '新晨益',       addr: '山西省忻州市代县',         source: '手动创建', scale: '4',   payback: '5',   profit10: '74.74',  transCap: 2375, volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-08-17 20:43:33', create: '2026-08-17 20:43:40', owner: '王晨',   calcState: 'done' },
+  { id: 3,  name: '闻喜县极速集中式快速充电站有限公司', addr: '山西省运城市闻喜县', source: '手动创建', scale: '', payback: '', profit10: '', transCap: 2000, volt: '1~10kV', useType: '单一制', feeType: '按容计费', lastCalc: '2026-08-12 11:20:24', create: '2026-08-12 11:47:29', owner: '李健强', calcState: 'done' },
+  { id: 2,  name: '聊城高唐',     addr: '山东省聊城市高唐县',       source: '手动创建', scale: '6',   payback: '6.92', profit10: '1141.18', transCap: 32000, volt: '110kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-08-06 16:39:44', create: '2026-08-06 16:39:44', owner: '王晨',   calcState: 'done' },
+  { id: 1,  name: '任丘昌鼎200kVA电阻器', addr: '河北省沧州市任丘市', source: '手动创建', scale: '', payback: '', profit10: '', transCap: 500, volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-08-06 12:20:11', create: '2026-08-06 12:40:16', owner: '刘洋',  calcState: 'done' }
+];
+
+/* 光伏测算数据 —— 前 10 条与截图一致 */
+window.PV_DATA = [
+  { id: 29, name: '量子科技', create: '2026-09-29 16:06:54', update: '2026-09-29 16:06:54', owner: '王晨' },
+  { id: 28, name: '江苏3000kw 光伏', create: '2026-09-18 15:23:10', update: '2026-09-18 15:23:10', owner: '薛易立' },
+  { id: 27, name: '泸州', create: '2026-08-17 20:02:30', update: '2026-08-17 20:02:36', owner: '王康' },
+  { id: 26, name: '垣曲集中式快速充电站有限公司光伏数据', create: '2026-08-12 11:28:24', update: '2026-08-12 11:28:24', owner: '李健强' },
+  { id: 25, name: '聊城高唐', create: '2026-08-06 16:16:15', update: '2026-08-06 16:16:04', owner: '王康' },
+  { id: 24, name: '沧州任丘', create: '2026-08-06 12:44:23', update: '2026-08-06 12:44:45', owner: '刘洋' },
+  { id: 23, name: '修江基1', create: '2026-07-29 10:12:34', update: '2026-07-30 09:22:11', owner: '朱涛 (Zhu Tao)' },
+  { id: 22, name: '0系数', create: '2026-07-28 15:41:07', update: '2026-07-28 15:44:52', owner: '孙悦轩' },
+  { id: 21, name: '重庆欣阳锑钛加工', create: '2026-07-27 09:03:19', update: '2026-07-27 11:30:08', owner: '刘洋' },
+  { id: 20, name: '测汇项目', create: '2026-07-25 17:22:44', update: '2026-07-26 08:15:36', owner: '薛易立' }
+];
+
+/* 光伏月份示例数据（编辑抽屉预览用，与截图一致） */
+window.PV_MONTH_SAMPLE = [188570.8, 204827.61, 326297.41, 368586.41, 425519.4, 378607.4, 356188.25, 341803.06, 287018.99, 249979.46, 191037.11, 180739.66];
+
+/* 报告页 —— 与截图一致 */
+window.REPORT = {
+  location: '重庆市/重庆郊县/巫溪县',
+  pv: {
+    capacity: '10000',      genTotal: '165.59',
+    selfRatio: '98',        chargeNeed: '164.03',
+    onGrid: '2.56',
+    tof: [
+      { label: '尖峰', gen: '0',     self: '0' },
+      { label: '高峰', gen: '20.58', self: '20.58' },
+      { label: '平段', gen: '90.94', self: '90.64' },
+      { label: '低谷', gen: '17.31', self: '17.09' },
+      { label: '深谷', gen: '37.76', self: '35.73' }
+    ]
+  },
+  overview: [
+    { cfg: '3台', payback: '7.76', reachPct: '52.97', reachDays: '193', pvGain: '0.22', income10: '88.7',  profit10: '18.23', epcCost: '70.47', diff1: '9.64',  dis1: '20.13', chg1: '10.5' },
+    { cfg: '4台', payback: '8.5',  reachPct: '48.41', reachDays: '177', pvGain: '0.22', income10: '110.14', profit10: '16.18', epcCost: '93.96', diff1: '11.9',  dis1: '24.65', chg1: '12.75' },
+    { cfg: '5台', payback: '9.09', reachPct: '44.57', reachDays: '165', pvGain: '0.23', income10: '128.74', profit10: '11.29', epcCost: '117.45', diff1: '13.83', dis1: '28.46', chg1: '14.63' }
+  ]
+};
+
+/* 明细数据：years[0]=第1年...；每个配置一组（3台/4台/5台）
+ * 列序：收益(万) | 尖峰充 | 尖峰放 | 高峰充 | 高峰放 | 平段充 | 平段放 | 低谷充 | 低谷放 | 深谷充 | 深谷放 | 消纳光伏电量 */
+window.REPORT_DETAIL = (function () {
+  /* 前 2 年与截图一致，后续按约 2% 年衰减推算 */
+  var y3 = [
+    ['第1年', 9.64, 0, 62314.3, 0, 129929.26, 28502.35, 41176.75, 71400.12, 0, 163359.7, 0, 3740.38],
+    ['第2年', 9.46, 0, 61077.88, 0, 127714.72, 28116.36, 40743.12, 70493.17, 0, 160209.18, 0, 3740.38]
+  ];
+  var decay = { 1: 0.98, 2: 0.98, 3: 0.98, 4: 0.98, 5: 0.98, 6: 0.98, 7: 0.98, 8: 0.98, 9: 0.98, 10: 0.98, 11: 1, 12: 1 };
+  for (var y = 3; y <= 10; y++) {
+    var prev = y3[y - 2];
+    var row = ['第' + y + '年'];
+    for (var c = 1; c <= 12; c++) {
+      var k = decay[c] || 1;
+      row.push(+(prev[c] * k).toFixed(2));
+    }
+    y3.push(row);
+  }
+  function variant(base, k) {
+    return base.map(function (r) {
+      return r.map(function (v, i) { return i === 0 ? v : +(v * k).toFixed(2); });
+    });
+  }
+  return {
+    '3': { years: y3 },
+    '4': { years: variant(y3, 1.31) },
+    '5': { years: variant(y3, 1.62) }
+  };
+})();
+
+/* 电价管理 —— 前 10 条与截图一致，共 22 条 */
+window.PRICE_DATA = [
+  { id: 22, name: '江西光伏扶贫项目',              remark: '两部制、10kV',                        owner: '崔阳' },
+  { id: 21, name: '江苏10kV两部制',                remark: '',                                   owner: '崔阳' },
+  { id: 20, name: '江西（两部制）~10kV',            remark: '',                                   owner: '王晨' },
+  { id: 19, name: '山西目前',                      remark: '山西尖峰电价算基础，其余部分分时电价', owner: '李斌强' },
+  { id: 18, name: '山东-大同-储能型',              remark: '',                                   owner: '王晨' },
+  { id: 17, name: '黄河-两部制-10kV',              remark: '',                                   owner: '刘洋' },
+  { id: 16, name: '江西10kV两部制',                remark: '',                                   owner: '孙杨轩' },
+  { id: 15, name: '安徽两网制-10kV',               remark: '',                                   owner: '孙杨轩' },
+  { id: 14, name: '广东-两部制-10kV',              remark: '',                                   owner: '王晨' },
+  { id: 13, name: '浙江-两部制-10kV（人工工厂）-2607国数', remark: '',                              owner: '王晨' },
+  { id: 12, name: '湖南-单一制-10kV',              remark: '',                                   owner: '刘洋' },
+  { id: 11, name: '湖北-两部制-35kV',              remark: '',                                   owner: '王晨' },
+  { id: 10, name: '四川-两部制-10kV（丰枯）',       remark: '丰枯水期电价不同',                    owner: '崔阳' },
+  { id: 9,  name: '重庆-两部制-10kV',              remark: '',                                   owner: '孙杨轩' },
+  { id: 8,  name: '陕西-两部制-10kV',              remark: '',                                   owner: '李斌强' },
+  { id: 7,  name: '河北南网-两部制-10kV',          remark: '',                                   owner: '刘洋' },
+  { id: 6,  name: '冀北-两部制-10kV',              remark: '',                                   owner: '王晨' },
+  { id: 5,  name: '辽宁-两部制-10kV',              remark: '',                                   owner: '崔阳' },
+  { id: 4,  name: '吉林-两部制-10kV',              remark: '',                                   owner: '孙杨轩' },
+  { id: 3,  name: '黑龙江-两部制-10kV',            remark: '',                                   owner: '刘洋' },
+  { id: 2,  name: '蒙西-两部制-10kV',              remark: '',                                   owner: '李斌强' },
+  { id: 1,  name: '青海-两部制-10kV',              remark: '',                                   owner: '王晨' }
+];
+
+/* 电价模板配置：时段分类电价 + 12 个月用电时段 */
+window.PRICE_TPL = {
+  name: '江西光伏自发自用',
+  remark: '两部制，10kv',
+  isPublic: '否',
+  tariffs: ['0.9568', '0.8840', '0.6387', '0.3933', '0.3524'],
+  months: [
+    { m: '1月',  spike: '18:00-20:00', peak: '09:00-12:00、20:00-21:00', flat: '00:00-09:00、12:00-18:00、21:00-24:00', valley: '', deep: '', idle: '00:00-09:00、12:00-18:00、21:00-23:30', chg: '23:30-24:00', dis: '09:00-12:00、18:00-21:00', hours: '4' },
+    { m: '2月',  spike: '18:00-21:00', peak: '08:00-12:00、17:00-18:00', flat: '00:00-08:00、12:00-17:00、21:00-24:00', valley: '', deep: '', idle: '00:00-08:00、12:00-17:00、21:00-23:30', chg: '23:30-24:00', dis: '08:00-12:00、17:00-21:00', hours: '4' },
+    { m: '3月',  spike: '18:00-21:00', peak: '08:00-12:00、17:00-18:00', flat: '00:00-08:00、12:00-17:00、21:00-24:00', valley: '', deep: '', idle: '00:00-08:00、12:00-17:00、21:00-23:30', chg: '23:30-24:00', dis: '08:00-12:00、17:00-21:00', hours: '4' },
+    { m: '4月',  spike: '19:00-21:00', peak: '08:00-12:00、17:00-19:00', flat: '00:00-08:00、12:00-17:00、21:00-24:00', valley: '', deep: '', idle: '00:00-08:00、12:00-17:00、21:00-23:30', chg: '23:30-24:00', dis: '08:00-12:00、17:00-21:00', hours: '4' },
+    { m: '5月',  spike: '19:00-21:00', peak: '08:00-12:00、17:00-19:00', flat: '00:00-08:00、12:00-17:00、21:00-24:00', valley: '', deep: '', idle: '00:00-08:00、12:00-17:00、21:00-23:30', chg: '23:30-24:00', dis: '08:00-12:00、17:00-21:00', hours: '4' },
+    { m: '6月',  spike: '20:00-22:00', peak: '08:00-11:30、14:00-20:00', flat: '00:00-08:00、11:30-14:00、22:00-24:00', valley: '', deep: '', idle: '00:00-08:00、11:30-14:00、22:00-23:30', chg: '23:30-24:00', dis: '08:00-11:30、14:00-22:00', hours: '3' },
+    { m: '7月',  spike: '20:00-22:00', peak: '08:00-11:30、14:00-20:00', flat: '00:00-08:00、11:30-14:00、22:00-24:00', valley: '', deep: '', idle: '00:00-08:00、11:30-14:00、22:00-23:30', chg: '23:30-24:00', dis: '08:00-11:30、14:00-22:00', hours: '3' },
+    { m: '8月',  spike: '20:00-22:00', peak: '08:00-11:30、14:00-20:00', flat: '00:00-08:00、11:30-14:00、22:00-24:00', valley: '', deep: '', idle: '00:00-08:00、11:30-14:00、22:00-23:30', chg: '23:30-24:00', dis: '08:00-11:30、14:00-22:00', hours: '3' },
+    { m: '9月',  spike: '19:00-21:00', peak: '08:00-12:00、17:00-19:00', flat: '00:00-08:00、12:00-17:00、21:00-24:00', valley: '', deep: '', idle: '00:00-08:00、12:00-17:00、21:00-23:30', chg: '23:30-24:00', dis: '08:00-12:00、17:00-21:00', hours: '4' },
+    { m: '10月', spike: '18:00-21:00', peak: '08:00-12:00、17:00-18:00', flat: '00:00-08:00、12:00-17:00、21:00-24:00', valley: '', deep: '', idle: '00:00-08:00、12:00-17:00、21:00-23:30', chg: '23:30-24:00', dis: '08:00-12:00、17:00-21:00', hours: '4' },
+    { m: '11月', spike: '18:00-20:00', peak: '09:00-12:00、20:00-21:00', flat: '00:00-09:00、12:00-18:00、21:00-24:00', valley: '', deep: '', idle: '00:00-09:00、12:00-18:00、21:00-23:30', chg: '23:30-24:00', dis: '09:00-12:00、18:00-21:00', hours: '4' },
+    { m: '12月', spike: '18:00-20:00', peak: '09:00-12:00、20:00-21:00', flat: '00:00-09:00、12:00-18:00、21:00-24:00', valley: '', deep: '', idle: '00:00-09:00、12:00-18:00、21:00-23:30', chg: '23:30-24:00', dis: '09:00-12:00、18:00-21:00', hours: '4' }
+  ]
+};
+
+/* 成本信息 —— 6 条 */
+window.COST_DATA = [
+  { id: 6, name: '能源控制器自动化模型', remark: '',   owner: '王直', epc: '0.85', om: '0', ins: '0', yearly: '0', once: '0', isPublic: '否' },
+  { id: 5, name: '123',                 remark: '',   owner: '张扩', epc: '0.95', om: '0', ins: '0', yearly: '0', once: '0', isPublic: '否' },
+  { id: 4, name: 'EPC: 0.9',            remark: '',   owner: '0',    epc: '0.90', om: '0', ins: '0', yearly: '0', once: '0', isPublic: '否' },
+  { id: 3, name: '1111',                remark: '11', owner: '0',    epc: '0.85', om: '0', ins: '0', yearly: '0', once: '0', isPublic: '否' },
+  { id: 2, name: '测试成本',             remark: '',   owner: '0',    epc: '0.85', om: '0', ins: '0', yearly: '0', once: '0', isPublic: '否' },
+  { id: 1, name: '1',                   remark: '',   owner: '0',    epc: '0.85', om: '0', ins: '0', yearly: '0', once: '0', isPublic: '否' }
+];
+
+/* 储能模板 —— 2 条 */
+window.STORAGE_DATA = [
+  { id: 2, name: '金刚2', brand: '天合储能', model: 'TSMG5015MC-TSLH', power: '2507', cap: '5015', update: '2026-07-08 16:22:41', owner: '崔阳',
+    ratio: '0.5', dod: '92', chgEff: '93.5', disEff: '93.5', decayMode: 'fixed', decayFixed: '2.5', isPublic: '是',
+    decay: ['2.5','2.5','2.5','2.5','2.5','2.5','2.5','2.5','2.5','2.5'] },
+  { id: 1, name: '蓝海2', brand: '天合储能', model: 'TSC1261-C',      power: '125',  cap: '261',  update: '2026-07-08 19:26:10', owner: '崔阳',
+    ratio: '0.5', dod: '90', chgEff: '93',   disEff: '93',   decayMode: 'fixed', decayFixed: '2.5', isPublic: '否',
+    decay: ['2.5','2.5','2.5','2.5','2.5','2.5','2.5','2.5','2.5','2.5'] }
+];
+
+/* 下拉候选 */
+window.OPTIONS = {
+  enterprise: ['1111', '量子科技', '常州新诚', '金万', '江西抚州1', '新晨益', '聊城高唐'],
+  price: ['江西光伏自发自用', '江西光伏扶贫项目', '江苏10kV两部制', '山西目前', '山东-大同-储能型'],
+  pv: ['量子科技', '江苏3000kw 光伏', '泸州', '聊城高唐', '沧州任丘'],
+  load: ['222', '111', '量子科技', '金万', '江西抚顺'],
+  cost: ['能源控制器自动化模型', '123', 'EPC: 0.9', '测试成本'],
+  storage: ['金刚2 — 天合储能 TSMG5015MC-TSLH', '蓝海2 — 天合储能 TSC1261-C'],
+  volt: ['1~10kV', '10kV', '35kV', '110kV', '220kV'],
+  useType: ['两部制', '单一制'],
+  feeType: ['按容计费', '按需计费', '按容量+需量']
+};
