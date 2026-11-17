@@ -127,7 +127,7 @@
     function monthTable(from, to, values) {
       var html = '<table class="month-table mt-compact"><thead><tr><th class="mt-corner">月份</th>';
       for (var m = from; m <= to; m++) html += '<th>' + m + '月</th>';
-      html += '</tr></thead><tbody><tr><td class="mt-label">光伏数据(kWh)</td>';
+      html += '</tr></thead><tbody><tr><td class="mt-label">光伏数据(kW)</td>';
       for (var i = from - 1; i < to; i++) {
         html += '<td><input class="input mt-input" value="' + U.esc(values[i]) + '" data-mi="' + i + '" /></td>';
       }
@@ -141,18 +141,18 @@
       U.field('光伏数据名称', U.unitInput({ id: 'pvName', value: d.name, placeholder: '请输入光伏数据名称', cls: 'w-320' }), { required: true }) +
       '</div>';
     body += '<div class="dr-row dr-upload">' +
-      '<span class="dr-upload-label">光伏数据：</span>' +
-      '<button class="btn btn-sm" id="pvUpload">上传</button>' +
-      '<a class="link dr-link" id="pvTpl">下载模板</a>' +
-      '<span class="dr-spacer"></span>' +
-      '<button class="btn btn-primary" id="pvSaveTop">保存</button>' +
+      '<span class="dr-upload-label">光伏数据</span>' +
+      '<button class="btn btn-sm" id="pvUpload">' + U.ICON.uploadSm + '上传</button>' +
+      '<a class="link dr-link" id="pvTpl">' + U.ICON.download + '下载模板</a>' +
       '</div>';
+    body += '<div class="dr-row dr-row-right"><button class="btn btn-primary" id="pvSaveTop">保存</button></div>';
 
     body += '<div class="dr-sec">处理结果预览</div>';
-    body += '<div class="dr-hint" id="pvResultHint">当前版本数据共计处理 8760 条，其中 0 条为空</div>';
-    body += '<div class="dr-row"><a class="link dr-link" id="pvDownload">下载处理结果</a></div>';
+    body += '<div class="dr-hint-line">' +
+      '<span class="dr-hint" id="pvResultHint"><i class="req">*</i>当前版本数据共计处理 8760 条，其中 0 条为空</span>' +
+      '<a class="link dr-link" id="pvDownload">' + U.ICON.download + '下载处理结果</a>' +
+      '</div>';
 
-    body += '<div class="dr-sec">月份汇总</div>';
     body += monthTable(1, 6, months);
     body += '<div style="height:8px"></div>';
     body += monthTable(7, 12, months);
@@ -163,13 +163,13 @@
       bodyHtml: body,
       onMount: function (el) {
         el.querySelector('#pvTpl').addEventListener('click', function () {
-          var rows = [['月份', '光伏数据(kWh)']];
+          var rows = [['月份', '光伏数据(kW)']];
           for (var m = 1; m <= 12; m++) rows.push([m + '月', '']);
           U.exportXlsx('光伏数据模板', rows, '光伏数据模板.xlsx');
           window.App.toast('模板已下载');
         });
         el.querySelector('#pvDownload').addEventListener('click', function () {
-          var rows = [['月份', '光伏数据(kWh)']];
+          var rows = [['月份', '光伏数据(kW)']];
           el.querySelectorAll('.mt-input').forEach(function (inp, i) {
             rows.push([(i + 1) + '月', inp.value]);
           });

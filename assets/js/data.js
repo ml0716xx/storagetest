@@ -54,30 +54,30 @@ window.LOAD_DATA = [
 
 /* 企业管理 —— 前 10 条与截图一致 */
 window.ENTERPRISE_DATA = [
-  { id: 10, name: '1111',        addr: '重庆市/重庆郊县/巫溪县',   source: '手动创建', scale: '--',  payback: '--',  profit10: '--',    transCap: 1000,  volt: '1~10kV',  useType: '两部制', feeType: '按容计费', lastCalc: '2026-11-05 14:47:32', create: '2026-11-05 14:47:32', owner: '王晨',   calcState: 'done' },
-  { id: 9,  name: '量子科技',     addr: '河南省安阳市林州市',       source: '手动创建', scale: '20',  payback: '5',   profit10: '569.04', transCap: 1250, volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-09-29 16:09:25', create: '2026-09-29 16:09:25', owner: '王晨',   calcState: 'done' },
-  { id: 8,  name: '常州新诚',     addr: '江苏省常州市新北区',       source: '手动创建', scale: '1',   payback: '5',   profit10: '22.05',  transCap: 1000, volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-09-29 16:20:17', create: '2026-09-29 16:20:17', owner: '朱涛',   calcState: 'done' },
-  { id: 7,  name: '金万',         addr: '天津市市辖区东郊区',       source: '手动创建', scale: '3',   payback: '4.9', profit10: '80.85',  transCap: 630,  volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-08-24 19:24:34', create: '2026-08-24 19:24:34', owner: '王晨',   calcState: 'done' },
-  { id: 6,  name: '江西抚州1',    addr: '江西省抚州市金溪县',       source: '手动创建', scale: '4',   payback: '7.59', profit10: '21.01', transCap: 1250, volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-08-18 10:42:03', create: '2026-08-18 16:29:02', owner: '薛易立', calcState: 'done' },
-  { id: 5,  name: '江西抚州储能企业', addr: '江西省抚州市金溪县',   source: '手动创建', scale: '--',  payback: '--',  profit10: '--',    transCap: 1250, volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-08-18 14:12:55', create: '2026-08-18 14:12:55', owner: '崔阳',   calcState: 'running' },
-  { id: 4,  name: '新晨益',       addr: '山西省忻州市代县',         source: '手动创建', scale: '4',   payback: '5',   profit10: '74.74',  transCap: 2375, volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-08-17 20:43:33', create: '2026-08-17 20:43:40', owner: '王晨',   calcState: 'done' },
-  { id: 3,  name: '闻喜县极速集中式快速充电站有限公司', addr: '山西省运城市闻喜县', source: '手动创建', scale: '', payback: '', profit10: '', transCap: 2000, volt: '1~10kV', useType: '单一制', feeType: '按容计费', lastCalc: '2026-08-12 11:20:24', create: '2026-08-12 11:47:29', owner: '李健强', calcState: 'done' },
-  { id: 2,  name: '聊城高唐',     addr: '山东省聊城市高唐县',       source: '手动创建', scale: '6',   payback: '6.92', profit10: '1141.18', transCap: 32000, volt: '110kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-08-06 16:39:44', create: '2026-08-06 16:39:44', owner: '王晨',   calcState: 'done' },
-  { id: 1,  name: '任丘昌鼎200kVA电阻器', addr: '河北省沧州市任丘市', source: '手动创建', scale: '', payback: '', profit10: '', transCap: 500, volt: '1~10kV', useType: '两部制', feeType: '按容计费', lastCalc: '2026-08-06 12:20:11', create: '2026-08-06 12:40:16', owner: '刘洋',  calcState: 'done' }
+  { id: 10, name: '1111',             addr: '重庆市/重庆市/巫山县',      source: '手动创建', scale: '--', payback: '--',   profit10: '--',      transCap: 1000,  volt: '1-10kV', useType: '两部制', feeType: '按容量计费', lastCalc: '2026-11-05 14:38:32', create: '2026-11-05 14:38:32', owner: '王勇',   calcState: 'done' },
+  { id: 9,  name: '量子科技',         addr: '河北省/廊坊市/香河县',      source: '手动创建', scale: '26', payback: '5',    profit10: '565.04',  transCap: 2250,  volt: '1-10kV', useType: '两部制', feeType: '按容量计费', lastCalc: '2026-09-29 16:08:25', create: '2026-09-29 16:08:25', owner: '王勇',   calcState: 'done' },
+  { id: 8,  name: '滁州敏达',         addr: '江苏省/常州市/新北区',      source: '手动创建', scale: '1',  payback: '5',    profit10: '22.05',   transCap: 1000,  volt: '1-10kV', useType: '两部制', feeType: '按容量计费', lastCalc: '2026-09-29 16:20:17', create: '2026-09-18 10:46:21', owner: '朱源',   calcState: 'done' },
+  { id: 7,  name: '金方',             addr: '天津市/滨海新区/宝坻',      source: '手动创建', scale: '3',  payback: '4.5',  profit10: '80.65',   transCap: 630,   volt: '1-10kV', useType: '两部制', feeType: '按容量计费', lastCalc: '2026-09-24 19:24:34', create: '2026-09-24 19:24:34', owner: '王勇',   calcState: 'done' },
+  { id: 6,  name: '江西筑想1',        addr: '江西省/抚州市/东乡区',      source: '手动创建', scale: '4',  payback: '7.59', profit10: '21.01',   transCap: 1250,  volt: '1-10kV', useType: '两部制', feeType: '按容量计费', lastCalc: '2026-09-18 16:28:10', create: '2026-09-18 16:28:02', owner: '薛易立', calcState: 'done' },
+  { id: 5,  name: '江西抚州某企业',   addr: '江西省/抚州市/东乡区',      source: '手动创建', scale: '--', payback: '--',   profit10: '--',      transCap: 1250,  volt: '1-10kV', useType: '两部制', feeType: '按容量计费', lastCalc: '2026-09-18 14:39:28', create: '2026-09-18 14:42:55', owner: '程阳',   calcState: 'running' },
+  { id: 4,  name: '新奥达',           addr: '四川省/泸州市/泸县',        source: '手动创建', scale: '4',  payback: '5',    profit10: '74.74',   transCap: 2375,  volt: '1-10kV', useType: '两部制', feeType: '按容量计费', lastCalc: '2026-08-17 20:46:33', create: '2026-08-17 20:45:40', owner: '王勇',   calcState: 'done' },
+  { id: 3,  name: '国网重庆培训中心充电站', addr: '山西省/运城市/闻喜县', source: '手动创建', scale: '',  payback: '',     profit10: '',        transCap: 2000,  volt: '1-10kV', useType: '单一制', feeType: '按容量计费', lastCalc: '2026-08-08 12:00:54', create: '2026-08-08 11:47:28', owner: '李晓强', calcState: 'done' },
+  { id: 2,  name: '聊城鲁源',         addr: '山东省/聊城市/高唐县',      source: '手动创建', scale: '6',  payback: '6.92', profit10: '1141.16', transCap: 32000, volt: '110kV',  useType: '两部制', feeType: '按容量计费', lastCalc: '2026-08-06 16:33:46', create: '2026-06-24 19:24:34', owner: '王勇',   calcState: 'done' },
+  { id: 1,  name: '住江亘德900KVA变压器', addr: '河北省/邢台市/任丘市',  source: '手动创建', scale: '',   payback: '',     profit10: '',        transCap: 500,   volt: '1-10kV', useType: '两部制', feeType: '按容量计费', lastCalc: '2026-08-06 13:20:17', create: '2026-08-06 12:47:16', owner: '刘洋',   calcState: 'done' }
 ];
 
 /* 光伏测算数据 —— 前 10 条与截图一致 */
 window.PV_DATA = [
-  { id: 29, name: '量子科技', create: '2026-09-29 16:06:54', update: '2026-09-29 16:06:54', owner: '王晨' },
-  { id: 28, name: '江苏3000kw 光伏', create: '2026-09-18 15:23:10', update: '2026-09-18 15:23:10', owner: '薛易立' },
-  { id: 27, name: '泸州', create: '2026-08-17 20:02:30', update: '2026-08-17 20:02:36', owner: '王康' },
-  { id: 26, name: '垣曲集中式快速充电站有限公司光伏数据', create: '2026-08-12 11:28:24', update: '2026-08-12 11:28:24', owner: '李健强' },
-  { id: 25, name: '聊城高唐', create: '2026-08-06 16:16:15', update: '2026-08-06 16:16:04', owner: '王康' },
-  { id: 24, name: '沧州任丘', create: '2026-08-06 12:44:23', update: '2026-08-06 12:44:45', owner: '刘洋' },
-  { id: 23, name: '修江基1', create: '2026-07-29 10:12:34', update: '2026-07-30 09:22:11', owner: '朱涛 (Zhu Tao)' },
-  { id: 22, name: '0系数', create: '2026-07-28 15:41:07', update: '2026-07-28 15:44:52', owner: '孙悦轩' },
-  { id: 21, name: '重庆欣阳锑钛加工', create: '2026-07-27 09:03:19', update: '2026-07-27 11:30:08', owner: '刘洋' },
-  { id: 20, name: '测汇项目', create: '2026-07-25 17:22:44', update: '2026-07-26 08:15:36', owner: '薛易立' }
+  { id: 29, name: '量子科技',                                  create: '2026-09-29 16:06:54', update: '2026-09-29 16:06:59', owner: '王勇' },
+  { id: 28, name: '江西2000kw光伏',                            create: '2026-09-18 14:53:10', update: '2026-09-18 16:26:01', owner: '薛易立' },
+  { id: 27, name: '泸州',                                      create: '2026-08-17 20:01:55', update: '2026-08-17 20:02:02', owner: '王勇' },
+  { id: 26, name: '极速集中式快速充电站有限公司光伏数据',       create: '2026-08-06 11:44:26', update: '2026-08-06 11:46:30', owner: '李晓强' },
+  { id: 25, name: '聊城鲁源',                                  create: '2026-08-06 16:14:14', update: '2026-08-06 16:42:49', owner: '王勇' },
+  { id: 24, name: '滨州正弘',                                  create: '2026-08-01 19:44:54', update: '2026-08-01 19:45:00', owner: '刘洋' },
+  { id: 23, name: '坤泰装1',                                   create: '2026-07-30 14:44:13', update: '2026-07-30 14:44:25', owner: '朱源（Zhu Yuan）' },
+  { id: 22, name: '0#楼能',                                    create: '2026-07-29 09:28:55', update: '2026-07-29 09:28:59', owner: '朱源（Zhu Yuan）' },
+  { id: 21, name: '康乐农牧饲料加工',                          create: '2026-07-15 16:43:34', update: '2026-07-15 16:43:37', owner: '孙艳轩' },
+  { id: 20, name: '潮江项目',                                  create: '2026-06-30 20:35:43', update: '2026-06-30 20:35:47', owner: '王勇' }
 ];
 
 /* 光伏月份示例数据（编辑抽屉预览用，与截图一致） */
@@ -87,21 +87,20 @@ window.PV_MONTH_SAMPLE = [188570.8, 204827.61, 326297.41, 368586.41, 425519.4, 3
 window.REPORT = {
   location: '重庆市/重庆郊县/巫溪县',
   pv: {
-    capacity: '10000',      genTotal: '165.59',
+    capacity: '1000',      genTotal: '166.59',
     selfRatio: '98',        chargeNeed: '164.03',
     onGrid: '2.56',
     tof: [
-      { label: '尖峰', gen: '0',     self: '0' },
-      { label: '高峰', gen: '20.58', self: '20.58' },
-      { label: '平段', gen: '90.94', self: '90.64' },
-      { label: '低谷', gen: '17.31', self: '17.09' },
-      { label: '深谷', gen: '37.76', self: '35.73' }
+      { label: '尖峰', gen: '0',     self: '0',     unit: 'kWh' },
+      { label: '高峰', gen: '20.58', self: '20.58', unit: '万kWh' },
+      { label: '平段', gen: '90.94', self: '90.64', unit: '万kWh' },
+      { label: '低谷', gen: '37.76', self: '35.73', unit: '万kWh' }
     ]
   },
   overview: [
-    { cfg: '3台', payback: '7.76', reachPct: '52.97', reachDays: '193', pvGain: '0.22', income10: '88.7',  profit10: '18.23', epcCost: '70.47', diff1: '9.64',  dis1: '20.13', chg1: '10.5' },
+    { cfg: '3台', payback: '7.75', reachPct: '52.97', reachDays: '183', pvGain: '0.22', income10: '88.7',  profit10: '18.23', epcCost: '70.47', diff1: '9.64',  dis1: '20.13', chg1: '10.5' },
     { cfg: '4台', payback: '8.5',  reachPct: '48.41', reachDays: '177', pvGain: '0.22', income10: '110.14', profit10: '16.18', epcCost: '93.96', diff1: '11.9',  dis1: '24.65', chg1: '12.75' },
-    { cfg: '5台', payback: '9.09', reachPct: '44.57', reachDays: '165', pvGain: '0.23', income10: '128.74', profit10: '11.29', epcCost: '117.45', diff1: '13.83', dis1: '28.46', chg1: '14.63' }
+    { cfg: '5台', payback: '9.09', reachPct: '44.57', reachDays: '163', pvGain: '0.23', income10: '128.74', profit10: '11.29', epcCost: '117.45', diff1: '13.83', dis1: '28.46', chg1: '14.63' }
   ]
 };
 
@@ -205,13 +204,13 @@ window.STORAGE_DATA = [
 
 /* 下拉候选 */
 window.OPTIONS = {
-  enterprise: ['1111', '量子科技', '常州新诚', '金万', '江西抚州1', '新晨益', '聊城高唐'],
+  enterprise: ['1111', '量子科技', '滁州敏达', '金方', '江西筑想1', '新奥达', '聊城鲁源'],
   price: ['江西光伏自发自用', '江西光伏扶贫项目', '江苏10kV两部制', '山西目前', '山东-大同-储能型'],
-  pv: ['量子科技', '江苏3000kw 光伏', '泸州', '聊城高唐', '沧州任丘'],
+  pv: ['量子科技', '江西2000kw光伏', '泸州', '聊城鲁源', '滨州正弘'],
   load: ['222', '111', '量子科技', '金万', '江西抚顺'],
   cost: ['能源控制器自动化模型', '123', 'EPC: 0.9', '测试成本'],
   storage: ['金刚2 — 天合储能 TSMG5015MC-TSLH', '蓝海2 — 天合储能 TSC1261-C'],
-  volt: ['1~10kV', '10kV', '35kV', '110kV', '220kV'],
+  volt: ['1-10kV', '10kV', '35kV', '110kV', '220kV'],
   useType: ['两部制', '单一制'],
-  feeType: ['按容计费', '按需计费', '按容量+需量']
+  feeType: ['按容量计费', '按需量计费', '按容量+需量']
 };

@@ -62,7 +62,7 @@
         U.field('企业地址', U.selectBox({ id: 'fEntAddr', placeholder: '请选择企业地址', options: ['重庆市/重庆郊县/巫溪县', '江苏省常州市新北区', '山西省运城市闻喜县'] }), { required: true }) +
         U.field('电压等级', U.selectBox({ id: 'fVolt', placeholder: '请选择电压等级', options: window.OPTIONS.volt }), { required: true }) +
         U.field('用电类别', U.selectBox({ id: 'fUseType', placeholder: '请选择用电类别', options: window.OPTIONS.useType }), { required: true }) +
-        U.field('计费类型', U.selectBox({ id: 'fFeeType', placeholder: '请选择计费类型', options: window.OPTIONS.feeType, value: '按容计费' }), { required: true }) +
+        U.field('计费类型', U.selectBox({ id: 'fFeeType', placeholder: '请选择计费类型', options: window.OPTIONS.feeType, value: '按容量计费' }), { required: true }) +
         U.field('变压器容量', U.unitInput({ id: 'fTrans', placeholder: '请输入变压器容量', unit: 'kVA' }), { required: true }) +
         U.field('最大负载率', U.unitInput({ id: 'fLoadRate', placeholder: '请输入最大负载率', unit: '%' }), { required: true }) +
         '</div>';
@@ -73,7 +73,7 @@
       html += secHead('测算目标');
       html += '<div class="f-grid">' +
         U.field('起配台数建议', U.unitInput({ id: 'fStartUnits', placeholder: '请输入起配台数建议', unit: '台' }), { required: true }) +
-        U.field('储能最长回本年限', U.unitInput({ id: 'fMaxPayback', placeholder: '请输入储能最长回本年限', unit: '年' }), { required: true }) +
+        U.field('储能最长回本年限s', U.unitInput({ id: 'fMaxPayback', placeholder: '请输入储能最长回本年限', unit: '年' }), { required: true }) +
         '</div>';
       html += '</section>';
 
@@ -107,12 +107,10 @@
       html += '<div class="f-grid">' +
         U.field('光伏装机容量', U.unitInput({ id: 'fPvCap', placeholder: '请输入光伏装机容量', unit: 'kWp' }), { required: true }) +
         U.field('光伏上网电价', U.unitInput({ id: 'fPvPrice', placeholder: '请输入光伏上网电价', unit: '元/kWh' }), { required: true }) +
+        '<div class="f-item"></div>' +
         U.field('光伏数据', U.selectBox({ id: 'fPvData', placeholder: '请选择光伏数据', options: window.OPTIONS.pv }), { required: true }) +
         '</div>';
-      html += '<div class="f-sub">' +
-        '<div class="f-sub-head">光伏发电量</div>' +
-        U.monthRow('光伏(kWh)', ZERO12) +
-        '</div>';
+      html += U.monthRow('光伏(kWh)', ZERO12);
       html += '</section>';
 
       /* 负荷信息 */
@@ -120,13 +118,11 @@
       html += secHead('负荷信息');
       html += '<div class="f-grid">' +
         U.field('负荷数据', U.selectBox({ id: 'fLoadData', placeholder: '请选择负荷数据', options: window.OPTIONS.load }), { required: true }) +
+        '<div class="f-item"></div><div class="f-item"></div>' +
         U.field('CT倍率', U.unitInput({ id: 'fCt', placeholder: '请输入CT倍率', unit: '倍' })) +
         U.field('PT倍率', U.unitInput({ id: 'fPt', placeholder: '请输入PT倍率', unit: '倍' })) +
         '</div>';
-      html += '<div class="f-sub">' +
-        '<div class="f-sub-head">负荷数据</div>' +
-        U.monthRow('负荷数据(kWh)', ZERO12) +
-        '</div>';
+      html += U.monthRow('负荷数据(kWh)', ZERO12);
       html += '</section>';
 
       /* 储能信息 */
@@ -134,24 +130,24 @@
       html += secHead('储能信息');
       html += '<div class="f-grid">' +
         U.field('选择储能产品', U.selectBox({ id: 'fStorage', placeholder: '请选择储能产品', options: window.OPTIONS.storage }), { required: true }) +
+        '<div class="f-item"></div><div class="f-item"></div>' +
         U.field('储能品牌', U.unitInput({ id: 'fBrand', placeholder: '请输入储能品牌' }), { required: true }) +
         U.field('储能型号', U.unitInput({ id: 'fModel', placeholder: '请输入储能型号' }), { required: true }) +
         U.field('储能容量', U.unitInput({ id: 'fCap', placeholder: '请输入储能容量', unit: 'kWh' }), { required: true }) +
-        U.field('额定功率', U.unitInput({ id: 'fPower', placeholder: '请输入额定功率', unit: 'kW' }), { required: true }) +
-        U.field('充放倍率', U.unitInput({ id: 'fRatio', placeholder: '请输入充放倍率', unit: 'P' }), { required: true }) +
+        U.field('储能额定功率', U.unitInput({ id: 'fPower', placeholder: '请输入储能额定功率', unit: 'kW' }), { required: true }) +
+        U.field('充放电倍率', U.unitInput({ id: 'fRatio', placeholder: '请输入充放电倍率', unit: 'P' }), { required: true }) +
         U.field('DOD深度', U.unitInput({ id: 'fDod', placeholder: '请输入DOD深度', unit: '%' }), { required: true }) +
-        U.field('充电效率', U.unitInput({ id: 'fChgEff', placeholder: '请输入充电效率', unit: '%' }), { required: true }) +
         U.field('放电效率', U.unitInput({ id: 'fDisEff', placeholder: '请输入放电效率', unit: '%' }), { required: true }) +
-        '</div>';
-
-      html += '<div class="f-inline">' +
+        U.field('充电效率', U.unitInput({ id: 'fChgEff', placeholder: '请输入充电效率', unit: '%' }), { required: true }) +
+        '<div class="f-item">' +
         '<label class="f-label"><i class="req">*</i>年衰减率</label>' +
-        '<label class="radio-item"><input type="radio" name="decayMode" value="custom" id="decayCustom" />自定义</label>' +
-        '<label class="radio-item"><input type="radio" name="decayMode" value="fixed" id="decayFixed" checked />固定</label>' +
-        U.unitInput({ id: 'fDecayFixed', placeholder: '2.5', unit: '%', value: '2.5', inputCls: 'i-short' }) +
+        '<div class="f-inline-plain">' +
+        '<label class="radio-item"><input type="radio" name="decayMode" value="custom" id="decayCustom" checked />自定义</label>' +
+        '<label class="radio-item"><input type="radio" name="decayMode" value="fixed" id="decayFixed" />固定</label>' +
+        '</div></div>' +
         '</div>';
 
-      html += '<div class="decay-wrap" id="decayWrap">' + decayTable('fixed') + '</div>';
+      html += '<div class="decay-wrap" id="decayWrap">' + decayTable('custom') + '</div>';
       html += '</section>';
 
       /* 其他成本 */
@@ -159,10 +155,11 @@
       html += secHead('其他成本');
       html += '<div class="f-grid">' +
         U.field('选择成本模板', U.selectBox({ id: 'fCostTpl', placeholder: '请选择成本模板', options: window.OPTIONS.cost }), { required: true }) +
-        U.field('EPC成本', U.unitInput({ id: 'fEpc', placeholder: '0', unit: '元/Wh', value: '0.85' }), { required: true }) +
+        '<div class="f-item"></div><div class="f-item"></div>' +
+        U.field('EPC成本', U.unitInput({ id: 'fEpc', placeholder: '0', unit: '元/Wh', value: '0.95' }), { required: true }) +
         U.field('运维费用', U.unitInput({ id: 'fOm', placeholder: '0', unit: '元/Wh/年', value: '0' }), { required: true }) +
         U.field('保险费用', U.unitInput({ id: 'fIns', placeholder: '0', unit: '元/台/年', value: '0' }), { required: true }) +
-        U.field('每年补充成本', U.unitInput({ id: 'fYearly', placeholder: '0', unit: '元', value: '0' }), { required: true }) +
+        U.field('首年补充成本', U.unitInput({ id: 'fYearly', placeholder: '0', unit: '元', value: '0' }), { required: true }) +
         U.field('一次性补充成本', U.unitInput({ id: 'fOnce', placeholder: '0', unit: '元', value: '0' }), { required: true }) +
         '</div>';
       html += '</section>';
@@ -236,8 +233,6 @@
         el.addEventListener('change', function () {
           var wrap = root.querySelector('#decayWrap');
           wrap.innerHTML = decayTable(el.value);
-          var fixedInput = root.querySelector('#fDecayFixed');
-          if (fixedInput) fixedInput.disabled = (el.value === 'custom');
         });
       });
 
@@ -254,8 +249,6 @@
         var wrap = root.querySelector('#decayWrap');
         if (wrap) {
           wrap.innerHTML = decayTable(s.decayMode, s.decay);
-          var f = root.querySelector('#fDecayFixed');
-          if (f) { f.value = s.decayFixed; f.disabled = (s.decayMode === 'custom'); }
           var radio = root.querySelector('input[name="decayMode"][value="' + s.decayMode + '"]');
           if (radio) radio.checked = true;
         }
@@ -279,20 +272,16 @@
   function decayTable(mode, values) {
     var v = values || ['2.5','2.5','2.5','2.5','2.5','2.5','2.5','2.5','2.5','2.5'];
     var html = '<table class="decay-table"><thead><tr><th class="dt-corner">年份</th>';
-    for (var i = 1; i <= 5; i++) html += '<th>第' + i + '年</th>';
+    for (var i = 1; i <= 10; i++) html += '<th>第' + i + '年</th>';
     html += '</tr></thead><tbody><tr><td class="dt-corner">衰减率</td>';
-    for (var j = 0; j < 5; j++) html += '<td>' + cell(mode, v[j]) + '</td>';
-    html += '</tr></tbody><thead><tr><th class="dt-corner">年份</th>';
-    for (var k = 6; k <= 10; k++) html += '<th>第' + k + '年</th>';
-    html += '</tr></thead><tbody><tr><td class="dt-corner">衰减率</td>';
-    for (var m = 5; m < 10; m++) html += '<td>' + cell(mode, v[m]) + '</td>';
+    for (var j = 0; j < 10; j++) html += '<td>' + cell(mode, v[j]) + '</td>';
     html += '</tr></tbody></table>';
     return html;
   }
 
   function cell(mode, val) {
     if (mode === 'custom') {
-      return '<span class="ui-wrap"><input class="input dt-input" placeholder="请输入" /><i class="ui-unit">%</i></span>';
+      return '<span class="ui-wrap"><input class="input dt-input" /><i class="ui-unit">%</i></span>';
     }
     return '<span class="dt-val">' + U.esc(val) + '%</span>';
   }

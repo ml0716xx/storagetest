@@ -1333,11 +1333,12 @@ td.col-time { color: var(--text-2); font-variant-numeric: tabular-nums; }
 .kpi-label { font-size: 12px; color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .kpi-value { font-size: 19px; font-weight: 600; color: var(--text-1); margin-top: 8px; font-variant-numeric: tabular-nums; }
 .kpi-unit { font-size: 12px; font-weight: 400; color: var(--text-3); margin-left: 4px; }
-.kpi-grid-2 { margin-top: 12px; }
+.kpi-grid-2 { margin-top: 12px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .kpi-sm { padding: 10px 12px; }
 .kpi-pair { display: flex; align-items: baseline; gap: 6px; margin-top: 4px; }
 .kp-val { font-size: 14px; font-weight: 600; color: var(--text-1); font-variant-numeric: tabular-nums; }
-.kp-tag { font-size: 11px; color: var(--text-3); }
+.kp-tag { font-size: 11px; color: var(--text-3); min-width: 40px; }
+.kp-unit { font-size: 11px; color: var(--text-3); }
 
 .rp-table { table-layout: auto; min-width: 100%; }
 .rp-table th, .rp-table td { font-size: 12px; padding: 0 10px; white-space: nowrap; }
@@ -1373,6 +1374,11 @@ td.col-time { color: var(--text-2); font-variant-numeric: tabular-nums; }
 .dr-spacer { flex: 1; }
 .dr-link { font-size: 13px; }
 .dr-hint { font-size: 12px; color: var(--text-2); margin-bottom: 6px; }
+.dr-row-right { justify-content: flex-end; }
+.dr-hint-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 2px 0 10px; }
+.dr-hint-line .dr-hint { margin-bottom: 0; }
+.dr-hint-line .req, .dr-hint .req { color: var(--danger); font-style: normal; margin-right: 2px; }
+.dr-link { display: inline-flex; align-items: center; gap: 3px; }
 .w-320 { width: 320px; }
 .dr-grid .f-item.f-wide { grid-column: 1 / -1; }
 
@@ -1438,29 +1444,22 @@ table.data.tbl-ent tbody td:last-child {
 table.data.tbl-ent tbody tr:nth-child(odd) td:last-child { background: #fafafa; }
 table.data.tbl-ent tbody tr:hover td:last-child { background: var(--row-hover); }
 
-/* 企业表操作列：限定宽度，两行内排布 */
+/* 企业表操作列：单行排布 6 个链接 */
 table.data.tbl-ent thead th:last-child,
-table.data.tbl-ent tbody td:last-child { width: 250px; min-width: 250px; max-width: 250px; }
-table.data.tbl-ent .ops { flex-wrap: wrap; gap: 3px 8px; }
+table.data.tbl-ent tbody td:last-child { width: 358px; min-width: 358px; max-width: 358px; }
+table.data.tbl-ent .ops { flex-wrap: nowrap; gap: 8px; }
 table.data.tbl-ent .ops a, table.data.tbl-ent .ops span { white-space: nowrap; }
-table.data.tbl-ent tbody td { height: auto; padding-top: 8px; padding-bottom: 8px; }
-
-/* 企业表压紧到接近一屏，减少操作列遮挡 */
-table.data.tbl-ent { font-size: 10.5px; min-width: 0; }
-table.data.tbl-ent th, table.data.tbl-ent td { padding: 0 6px; font-size: 10.5px; }
-table.data.tbl-ent thead th:last-child,
-table.data.tbl-ent tbody td:last-child { width: 226px; min-width: 226px; max-width: 226px; }
-
-table.data.tbl-ent { padding: 0; }
-table.data.tbl-ent th, table.data.tbl-ent td { padding: 0 5px; }
-table.data.tbl-ent thead th:last-child,
-table.data.tbl-ent tbody td:last-child { width: 198px; min-width: 198px; max-width: 198px; }
-table.data.tbl-ent td:nth-child(1) { max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
-table.data.tbl-ent td:nth-child(2) { max-width: 170px; overflow: hidden; text-overflow: ellipsis; }
+table.data.tbl-ent tbody td { height: auto; padding-top: 9px; padding-bottom: 9px; }
+table.data.tbl-ent th, table.data.tbl-ent td { padding: 0 8px; font-size: 11.5px; }
+table.data.tbl-ent { font-size: 11.5px; min-width: 1620px; }
+table.data.tbl-ent th, table.data.tbl-ent td { padding: 0 7px; }
+table.data.tbl-ent td:nth-child(1) { max-width: 170px; overflow: hidden; text-overflow: ellipsis; }
+table.data.tbl-ent td:nth-child(2) { max-width: 190px; overflow: hidden; text-overflow: ellipsis; }
 
 .textarea { width: 100%; }
-.mt-compact .mt-corner, .mt-compact .mt-label { width: 74px; font-size: 11px; }
-.mt-compact th { font-size: 11px; padding: 0 4px; }
+.mt-compact .mt-corner, .mt-compact .mt-label { width: 104px; font-size: 10px; padding-left: 6px; }
+.mt-compact th { font-size: 10.5px; padding: 0 3px; }
+.mt-compact .mt-input { font-size: 10.5px; padding: 0 2px; }
 .month-table { table-layout: fixed; }
 
 /* 页签过多时可横向滚动 */

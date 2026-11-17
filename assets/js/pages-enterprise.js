@@ -3,8 +3,9 @@
   var U = window.PU;
   var ICON = U.ICON;
 
-  var ADDR_OPTIONS = ['重庆市/重庆郊县/巫溪县', '重庆市/重庆市郊县/巫溪县', '江苏省常州市新北区', '山西省运城市闻喜县',
-    '山东省聊城市高唐县', '河北省沧州市任丘市', '河南省安阳市林州市', '江西省抚州市金溪县', '天津市市辖区东郊区', '山西省忻州市代县'];
+  var ADDR_OPTIONS = ['重庆市/重庆市/巫山县', '江苏省/常州市/新北区', '山西省/运城市/闻喜县',
+    '山东省/聊城市/高唐县', '河北省/邢台市/任丘市', '河南省/安阳市/林州市', '江西省/抚州市/东乡区',
+    '天津市/滨海新区/宝坻', '四川省/泸州市/泸县', '河北省/廊坊市/香河县'];
 
   var page = {
     title: '企业管理',
@@ -54,7 +55,7 @@
 
       html += '<div class="table-wrap"><table class="data tbl-ent"><thead><tr>' +
         '<th style="width:14%">企业名称</th><th style="width:16%">企业地址</th><th style="width:7%">企业来源</th>' +
-        '<th style="width:7%">建议配储规模</th><th style="width:8%">回本时间(年)</th><th style="width:9%">10年净利润(万元)</th>' +
+        '<th style="width:7%">建议配储台数</th><th style="width:8%">回本年限(年)</th><th style="width:9%">10年净利润(万元)</th>' +
         '<th style="width:9%">变压器容量(kVA)</th><th style="width:7%">电压等级</th><th style="width:6%">用电类别</th>' +
         '<th style="width:7%">计费类型</th><th style="width:11%">最近测算时间</th><th style="width:11%">创建时间</th>' +
         '<th style="width:6%">创建人</th><th style="width:16%">操作</th></tr></thead><tbody>';
@@ -180,7 +181,7 @@
   /* ---------- 企业编辑抽屉 ---------- */
   function openEditDrawer(row, onDone) {
     var isEdit = !!row;
-    var d = row || { name: '', addr: '', volt: '', useType: '', feeType: '按容计费', transCap: '', loadRate: '', isPublic: '否' };
+    var d = row || { name: '', addr: '', volt: '', useType: '', feeType: '按容量计费', transCap: '', loadRate: '', isPublic: '否' };
     if (!d.isPublic) d.isPublic = '否';
 
     var body = '<div class="dr-grid">' +
@@ -190,7 +191,7 @@
       U.field('用电类别', U.selectBox({ id: 'eUseType', placeholder: '请选择用电类别', options: window.OPTIONS.useType, value: d.useType }), { required: true }) +
       U.field('计费类型', U.selectBox({ id: 'eFeeType', placeholder: '请选择计费类型', options: window.OPTIONS.feeType, value: d.feeType }), { required: true }) +
       U.field('变压器容量', U.unitInput({ id: 'eTrans', value: d.transCap, placeholder: '请输入', unit: 'kVA' }), { required: true }) +
-      U.field('最大负载率', U.unitInput({ id: 'eLoadRate', value: d.loadRate || '', placeholder: '请输入', unit: '%' }), { required: true }) +
+      U.field('最大负载率', U.unitInput({ id: 'eLoadRate', value: d.loadRate || '100', placeholder: '请输入', unit: '%' }), { required: true }) +
       '<div class="f-item"><label class="f-label"><i class="req">*</i>是否公开</label>' +
       '<div class="f-ctrl"><div class="f-inline-plain">' +
       '<label class="radio-item"><input type="radio" name="ePublic" value="是"' + (d.isPublic === '是' ? ' checked' : '') + '/>是</label>' +
