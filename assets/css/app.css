@@ -1446,7 +1446,7 @@ table.data.tbl-ent tbody tr:hover td:last-child { background: var(--row-hover); 
 
 /* 企业表操作列：单行排布 6 个链接 */
 table.data.tbl-ent thead th:last-child,
-table.data.tbl-ent tbody td:last-child { width: 358px; min-width: 358px; max-width: 358px; }
+table.data.tbl-ent tbody td:last-child { width: 312px; min-width: 312px; max-width: 312px; }
 table.data.tbl-ent .ops { flex-wrap: nowrap; gap: 8px; }
 table.data.tbl-ent .ops a, table.data.tbl-ent .ops span { white-space: nowrap; }
 table.data.tbl-ent tbody td { height: auto; padding-top: 9px; padding-bottom: 9px; }

@@ -88,8 +88,7 @@
             ? '<span class="link is-disabled">最新测算记录</span><span class="link is-disabled">导出</span>'
             : '<a class="link" data-act="record" data-id="' + r.id + '">最新测算记录</a><a class="link" data-act="export" data-id="' + r.id + '">导出</a>') +
           '<a class="link" data-act="calc" data-id="' + r.id + '">开始测算</a>' +
-          '<a class="link" data-act="view" data-id="' + r.id + '">查看企业</a>' +
-          '<a class="link" data-act="edit" data-id="' + r.id + '">编辑企业</a>' +
+          '<a class="link" data-act="edit" data-id="' + r.id + '">查看/编辑企业</a>' +
           '<a class="link-danger" data-act="del" data-id="' + r.id + '">删除企业</a>' +
           '</span></td></tr>';
       });
@@ -158,11 +157,10 @@
           if (act === 'export') {
             U.exportXlsx(row.name, [['字段', '值'], ['企业名称', row.name], ['企业地址', row.addr],
               ['变压器容量(kVA)', row.transCap], ['电压等级', row.volt], ['用电类别', row.useType],
-              ['计费类型', row.feeType], ['回本时间(年)', row.payback], ['10年净利润(万元)', row.profit10]], row.name + '.xlsx');
+              ['计费类型', row.feeType], ['回本年限(年)', row.payback], ['10年净利润(万元)', row.profit10]], row.name + '.xlsx');
             window.App.toast('导出成功');
             return;
           }
-          if (act === 'view') { window.App.toast('查看企业「' + row.name + '」'); return; }
           if (act === 'edit') {
             openEditDrawer(row, function () { window.App.rerenderPage(); });
             return;
