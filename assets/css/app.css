@@ -1486,6 +1486,24 @@ table.data.tbl-ent td:nth-child(2) { max-width: 190px; overflow: hidden; text-ov
   table.data.tbl-ent .ops a, table.data.tbl-ent .ops span { font-size: 10.5px; }
   table.data.tbl-ent tbody td { padding-top: 7px; padding-bottom: 7px; }
   table.data.tbl-ent tbody td:nth-child(1) { max-width: 118px; }
-  table.data.tbl-ent tbody td:nth-child(2) { max-width: 118px; }
-  table.data.tbl-ent tbody td:nth-child(3) { max-width: 132px; }
+  table.data.tbl-ent tbody td:nth-child(2) { max-width: 110px; }
+  table.data.tbl-ent tbody td:nth-child(3) { min-width: 92px; }
+  table.data.tbl-ent tbody td:nth-child(4) { max-width: 126px; }
+}
+
+/* 项目编号列：等宽小字，避免挤压 */
+table.data.tbl-ent .col-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  letter-spacing: -.2px;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+table.data.tbl-ent th:nth-child(3) { white-space: nowrap; }
+
+/* 只读输入框（系统生成字段） */
+.f-ctrl input[readonly] {
+  background: #f5f7fa;
+  color: var(--text-2);
+  cursor: not-allowed;
 }
