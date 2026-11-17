@@ -59,6 +59,7 @@
       html += secHead('企业信息');
       html += '<div class="f-grid">' +
         U.field('企业名称', U.selectBox({ id: 'fEntName', placeholder: '请选择企业', options: window.OPTIONS.enterprise, value: f.entName }), { required: true }) +
+        U.field('项目信息', U.unitInput({ id: 'fProject', placeholder: '请输入项目信息' })) +
         U.field('企业地址', U.selectBox({ id: 'fEntAddr', placeholder: '请选择企业地址', options: ['重庆市/重庆郊县/巫溪县', '江苏省常州市新北区', '山西省运城市闻喜县'] }), { required: true }) +
         U.field('电压等级', U.selectBox({ id: 'fVolt', placeholder: '请选择电压等级', options: window.OPTIONS.volt }), { required: true }) +
         U.field('用电类别', U.selectBox({ id: 'fUseType', placeholder: '请选择用电类别', options: window.OPTIONS.useType }), { required: true }) +
