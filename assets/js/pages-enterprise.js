@@ -14,6 +14,7 @@
       var f = state.applied;
       return (window.ENTERPRISE_DATA || []).filter(function (r) {
         if (f.name && r.name.indexOf(f.name) === -1) return false;
+        if (f.source && r.source !== f.source) return false;
         if (f.addr && r.addr.indexOf(f.addr) === -1) return false;
         if (f.volt && r.volt !== f.volt) return false;
         if (f.useType && r.useType !== f.useType) return false;
@@ -30,11 +31,14 @@
       var page = state.page;
       var slice = rows.slice((page - 1) * size, page * size);
       var f = state.draft;
+      if (f.source === undefined) f.source = '';
 
       var html = '';
       html += '<div class="filter-bar">' +
         '<div class="field"><span class="field-label">企业名称：</span>' +
         '<input class="input input-sm" id="fName" placeholder="请输入" value="' + U.esc(f.name) + '" /></div>' +
+        '<div class="field"><span class="field-label">企业来源：</span>' +
+        U.selectBox({ id: 'fSource', placeholder: '请选择', options: window.OPTIONS.source, value: f.source }) + '</div>' +
         '<div class="field"><span class="field-label">企业地址：</span>' +
         U.selectBox({ id: 'fAddr', placeholder: '请选择', options: ADDR_OPTIONS, value: f.addr }) + '</div>' +
         '<div class="field"><span class="field-label">电压等级：</span>' +
@@ -54,17 +58,18 @@
         '</div>';
 
       html += '<div class="table-wrap"><table class="data tbl-ent"><thead><tr>' +
-        '<th style="width:14%">企业名称</th><th style="width:16%">企业地址</th><th style="width:7%">企业来源</th>' +
+        '<th style="width:13%">企业名称</th><th style="width:11%">项目</th><th style="width:15%">企业地址</th><th style="width:7%">企业来源</th>' +
         '<th style="width:7%">建议配储台数</th><th style="width:8%">回本年限(年)</th><th style="width:9%">10年净利润(万元)</th>' +
         '<th style="width:9%">变压器容量(kVA)</th><th style="width:7%">电压等级</th><th style="width:6%">用电类别</th>' +
         '<th style="width:7%">计费类型</th><th style="width:11%">最近测算时间</th><th style="width:11%">创建时间</th>' +
         '<th style="width:6%">创建人</th><th style="width:16%">操作</th></tr></thead><tbody>';
 
-      if (!slice.length) html += U.emptyRow(14, '暂无符合条件的企业');
+      if (!slice.length) html += U.emptyRow(15, '暂无符合条件的企业');
       else slice.forEach(function (r) {
         var running = r.calcState === 'running';
         html += '<tr data-id="' + r.id + '">' +
           '<td class="col-name" title="' + U.esc(r.name) + '">' + U.esc(r.name) + '</td>' +
+          '<td class="col-proj" title="' + U.esc(r.project || '') + '">' + U.esc(r.project || '--') + '</td>' +
           '<td title="' + U.esc(r.addr) + '">' + U.esc(r.addr) + '</td>' +
           '<td><span class="tag">' + U.esc(r.source) + '</span></td>' +
           '<td>' + U.esc(r.scale) + '</td>' +
@@ -98,6 +103,7 @@
       function readFilters() {
         return {
           name: root.querySelector('#fName').value.trim(),
+          source: root.querySelector('#fSource').value,
           addr: root.querySelector('#fAddr').value,
           volt: root.querySelector('#fVolt').value,
           useType: root.querySelector('#fUseType').value,
@@ -112,12 +118,12 @@
         window.App.rerenderPage();
       });
       root.querySelector('#btnReset').addEventListener('click', function () {
-        state.draft = { name: '', addr: '', volt: '', useType: '', feeType: '' };
-        state.applied = { name: '', addr: '', volt: '', useType: '', feeType: '' };
+        state.draft = { name: '', source: '', addr: '', volt: '', useType: '', feeType: '' };
+        state.applied = { name: '', source: '', addr: '', volt: '', useType: '', feeType: '' };
         state.page = 1;
         window.App.rerenderPage();
       });
-      root.querySelectorAll('#fName, #fAddr, #fVolt, #fUseType, #fFeeType').forEach(function (el) {
+      root.querySelectorAll('#fName, #fSource, #fAddr, #fVolt, #fUseType, #fFeeType').forEach(function (el) {
         el.addEventListener('keydown', function (e) { if (e.key === 'Enter') root.querySelector('#btnSearch').click(); });
       });
 
@@ -126,10 +132,10 @@
       });
 
       root.querySelector('#btnExport').addEventListener('click', function () {
-        var rows = [['企业名称', '企业地址', '企业来源', '建议配储规模', '回本时间(年)', '10年净利润(万元)',
+        var rows = [['企业名称', '项目', '企业地址', '企业来源', '建议配储台数', '回本年限(年)', '10年净利润(万元)',
           '变压器容量(kVA)', '电压等级', '用电类别', '计费类型', '最近测算时间', '创建时间', '创建人']];
         self.query(state).forEach(function (r) {
-          rows.push([r.name, r.addr, r.source, r.scale, r.payback, r.profit10, r.transCap, r.volt, r.useType, r.feeType, r.lastCalc, r.create, r.owner]);
+          rows.push([r.name, r.project, r.addr, r.source, r.scale, r.payback, r.profit10, r.transCap, r.volt, r.useType, r.feeType, r.lastCalc, r.create, r.owner]);
         });
         U.exportXlsx('企业管理', rows, '企业管理.xlsx');
         window.App.toast('导出成功');

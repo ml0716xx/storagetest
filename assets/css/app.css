@@ -1465,3 +1465,27 @@ table.data.tbl-ent td:nth-child(2) { max-width: 190px; overflow: hidden; text-ov
 /* 页签过多时可横向滚动 */
 .tabs { overflow-x: auto; scrollbar-width: none; }
 .tabs::-webkit-scrollbar { display: none; }
+
+/* ==================== 企业管理表：窄屏自适应 ==================== */
+/* 1920 及以上：15 列单行铺开；1500 以下压紧字号、时间与操作列两行排布 */
+.table-wrap { scrollbar-width: thin; }
+.table-wrap::-webkit-scrollbar { height: 9px; width: 9px; }
+.table-wrap::-webkit-scrollbar-thumb { background: #c9ced6; border-radius: 5px; }
+.table-wrap::-webkit-scrollbar-thumb:hover { background: #aab1bb; }
+.table-wrap::-webkit-scrollbar-track { background: #f4f6f9; }
+
+@media (max-width: 1640px) {
+  table.data.tbl-ent { font-size: 11px; min-width: 0; }
+  table.data.tbl-ent th, table.data.tbl-ent td { padding: 0 5px; }
+  table.data.tbl-ent .col-time { white-space: normal; line-height: 1.28; min-width: 78px; }
+  table.data.tbl-ent thead th:nth-child(12),
+  table.data.tbl-ent thead th:nth-child(13) { white-space: normal; line-height: 1.2; }
+  table.data.tbl-ent thead th:last-child,
+  table.data.tbl-ent tbody td:last-child { width: 158px; min-width: 158px; max-width: 158px; }
+  table.data.tbl-ent .ops { flex-wrap: wrap; gap: 3px 7px; justify-content: flex-start; }
+  table.data.tbl-ent .ops a, table.data.tbl-ent .ops span { font-size: 10.5px; }
+  table.data.tbl-ent tbody td { padding-top: 7px; padding-bottom: 7px; }
+  table.data.tbl-ent tbody td:nth-child(1) { max-width: 118px; }
+  table.data.tbl-ent tbody td:nth-child(2) { max-width: 118px; }
+  table.data.tbl-ent tbody td:nth-child(3) { max-width: 132px; }
+}
