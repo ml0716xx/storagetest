@@ -1193,6 +1193,9 @@ td.col-time { color: var(--text-2); font-variant-numeric: tabular-nums; }
   line-height: 18px;
 }
 .txt-running { color: #c58a12; }
+/* 数据类型标签：系统模板用暖色，自定义用中性色，与「企业来源」的蓝标签区分 */
+.tag-system { background: #fff5e8; color: #b4661a; border-color: #f3d3a8; }
+.tag-custom { background: #f4f6fb; color: #5f6672; border-color: #e3e7f0; }
 .link.is-disabled { color: #c2c8d2; cursor: not-allowed; text-decoration: none; }
 .ops-wrap { flex-wrap: wrap; gap: 4px 10px; }
 .tbl-ent td { font-size: 12px; }

@@ -43,12 +43,18 @@
         '<button class="btn btn-primary" id="btnNew">' + ICON.plus + '新建</button></div>';
 
       html += '<div class="table-wrap"><table class="data">' +
-        '<colgroup><col style="width:40%"><col style="width:20%"><col style="width:20%"><col style="width:10%"><col style="width:10%"></colgroup>' +
-        '<thead><tr><th>光伏数据名称</th><th>创建时间</th><th>更新时间</th><th>创建人</th><th>操作</th></tr></thead><tbody>';
-      if (!slice.length) html += U.emptyRow(5, '暂无符合条件的光伏数据');
+        '<colgroup><col style="width:24%"><col style="width:14%"><col style="width:9%"><col style="width:13%"><col style="width:13%"><col style="width:14%"><col style="width:13%"></colgroup>' +
+        '<thead><tr><th>光伏数据名称</th><th>省市</th><th>类型</th><th>创建时间</th><th>更新时间</th><th>创建人</th><th>操作</th></tr></thead><tbody>';
+      if (!slice.length) html += U.emptyRow(7, '暂无符合条件的光伏数据');
       else slice.forEach(function (r) {
+        var region = (r.province && r.city) ? r.province + '/' + r.city : '--';
+        var typeTag = r.type === 'system'
+          ? '<span class="tag tag-system">系统模板</span>'
+          : '<span class="tag tag-custom">自定义</span>';
         html += '<tr data-id="' + r.id + '">' +
           '<td class="col-name" title="' + U.esc(r.name) + '">' + U.esc(r.name) + '</td>' +
+          '<td title="' + U.esc(region) + '">' + U.esc(region) + '</td>' +
+          '<td>' + typeTag + '</td>' +
           '<td class="col-time">' + r.create + '</td>' +
           '<td class="col-time">' + r.update + '</td>' +
           '<td>' + U.esc(r.owner) + '</td>' +
@@ -140,6 +146,23 @@
     body += '<div class="dr-row">' +
       U.field('光伏数据名称', U.unitInput({ id: 'pvName', value: d.name, placeholder: '请输入光伏数据名称', cls: 'w-320' }), { required: true }) +
       '</div>';
+    body += '<div class="dr-row">' +
+      U.field('省份', U.selectBox({
+        id: 'pvProvince', placeholder: '请选择省份',
+        options: Object.keys(window.CN_REGIONS || {}), value: d.province || ''
+      }), { required: true }) +
+      U.field('城市', U.selectBox({
+        id: 'pvCity', placeholder: '请选择城市',
+        options: (window.CN_REGIONS || {})[d.province] || [], value: d.city || ''
+      }), { required: true }) +
+      '</div>';
+    body += '<div class="dr-row">' +
+      '<div class="f-item"><label class="f-label"><i class="req">*</i>数据类型</label>' +
+      '<div class="f-ctrl"><div class="f-inline-plain">' +
+      '<label class="radio-item"><input type="radio" name="pvType" value="custom"' + (d.type !== 'system' ? ' checked' : '') + '/>自定义</label>' +
+      '<label class="radio-item"><input type="radio" name="pvType" value="system"' + (d.type === 'system' ? ' checked' : '') + '/>系统模板</label>' +
+      '</div></div></div>' +
+      '</div>';
     body += '<div class="dr-row dr-upload">' +
       '<span class="dr-upload-label">光伏数据</span>' +
       '<button class="btn btn-sm" id="pvUpload">' + U.ICON.uploadSm + '上传</button>' +
@@ -162,6 +185,15 @@
       width: 720,
       bodyHtml: body,
       onMount: function (el) {
+        /* 省 → 市级联：换省后城市重置，避免出现「江苏省/聊城市」这种组合 */
+        var provEl = el.querySelector('#pvProvince');
+        var cityEl = el.querySelector('#pvCity');
+        provEl.addEventListener('change', function () {
+          var cities = (window.CN_REGIONS || {})[provEl.value] || [];
+          cityEl.innerHTML = '<option value="">请选择城市</option>' + cities.map(function (c) {
+            return '<option value="' + U.esc(c) + '">' + U.esc(c) + '</option>';
+          }).join('');
+        });
         el.querySelector('#pvTpl').addEventListener('click', function () {
           var rows = [['月份', '光伏数据(kW)']];
           for (var m = 1; m <= 12; m++) rows.push([m + '月', '']);
@@ -199,16 +231,28 @@
       onSubmit: function (el) {
         var name = el.querySelector('#pvName').value.trim();
         if (!name) { window.App.toast('请填写光伏数据名称'); return; }
+        var province = el.querySelector('#pvProvince').value;
+        var city = el.querySelector('#pvCity').value;
+        if (!province) { window.App.toast('请选择省份'); return; }
+        if (!city) { window.App.toast('请选择城市'); return; }
+        var typeEl = el.querySelector('input[name="pvType"]:checked');
+        var type = typeEl ? typeEl.value : 'custom';
         var vals = [];
         el.querySelectorAll('.mt-input').forEach(function (inp) { vals.push(inp.value); });
         window.PV_MONTH_SAMPLE = vals;
         if (isEdit) {
           row.name = name;
+          row.province = province;
+          row.city = city;
+          row.type = type;
           row.update = nowStr();
         } else {
           var id = Math.max.apply(null, window.PV_DATA.map(function (r) { return r.id; })) + 1;
           var now = nowStr();
-          window.PV_DATA.unshift({ id: id, name: name, create: now, update: now, owner: '薛易立' });
+          window.PV_DATA.unshift({
+            id: id, name: name, province: province, city: city, type: type,
+            create: now, update: now, owner: '薛易立'
+          });
         }
         window.FormDrawer.close();
         window.App.toast('已保存');
